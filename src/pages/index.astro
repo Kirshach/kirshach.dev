@@ -13,6 +13,8 @@ const me = {
 };
 
 const shouldRenderWarning = Math.random() > 0.5;
+
+const skillItemColor = "darkblue";
 ---
 
 <Layout title="Kirshanov Dmitrii. Home.">
@@ -26,7 +28,7 @@ const shouldRenderWarning = Math.random() > 0.5;
     <p>
       Some of my skills are:
       <ul>
-        {me.skills.map((skill) => <li>{skill}</li>)}
+        {me.skills.map((skill) => <li class="skill-item">{skill}</li>)}
       </ul>
     </p>
     {
@@ -38,6 +40,10 @@ const shouldRenderWarning = Math.random() > 0.5;
       )
     }
   </main>
-
-  <style></style>
 </Layout>
+
+<style define:vars={{ skillItemColor }}>
+  .skill-item {
+    color: var(--skillItemColor);
+  }
+</style>
