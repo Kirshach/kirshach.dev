@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import Counter from "../components/Counter.astro";
 
 const me = {
-  country: "Armenia",
   passions: ["AR/VR", "music", "coffee"].reduce(
     (res, passion, i, passions) =>
       res + (i === passions.length - 1 ? ` and ${passion}` : `, ${passion}`),
@@ -14,7 +13,7 @@ const me = {
 const shouldRenderWarning = Math.random() > 0.5;
 ---
 
-<Layout title="Kirshanov Dmitrii. Home.">
+<Layout title="Home.">
   <div class="my-portrait-wrapper">
     <!-- TODO: this should be a <picture> -->
     <img
@@ -27,7 +26,7 @@ const shouldRenderWarning = Math.random() > 0.5;
   </div>
   <h1 class="visually-hidden">Dmitrii Kirshanov.</h1>
   <h2>Yep! That's me!</h2>
-  <p>I live in {me.country} and I develop stuff</p>
+  <p>I live in Armenia and I develop stuff</p>
   <p>
     I'm passionate about {me.passions}
   </p>
@@ -63,6 +62,7 @@ const shouldRenderWarning = Math.random() > 0.5;
 
   .my-first-name,
   .my-last-name {
+    position: absolute;
     font-size: 2rem;
     font-family: var(--fancy-font-stack);
     padding: 0.1em 0.5em;
@@ -73,13 +73,11 @@ const shouldRenderWarning = Math.random() > 0.5;
   }
 
   .my-first-name {
-    position: absolute;
     top: 0;
     right: 0;
   }
 
   .my-last-name {
-    position: absolute;
     bottom: 0;
     left: 0;
   }
