@@ -1,4 +1,17 @@
 :root {
+  /* Fonts */
   --font-stack: "Roboto", sans-serif;
   --fancy-font-stack: "Bungee Hairline", "Courier New", Courier, monospace;
+
+  /* Colors */
+  --primary-color: hsl(0, 0%, 0%);
+  --secondary-color: hsl(0, 0%, 100%);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: hsl(0, 0%, 100%);
+    --secondary-color: hsl(0, 0%, 0%);
+  }
 }
