@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Counter from "../components/Counter.astro";
 
 const me = {
   firstName: "Dmitrii",
@@ -18,28 +19,33 @@ const skillItemColor = "darkblue";
 ---
 
 <Layout title="Kirshanov Dmitrii. Home.">
-  <main>
-    <h1>Hello, World!</h1>
-    <h2>My name's {me.firstName} {me.lastName}</h2>
-    <p>I live in {me.country} and I develop stuff</p>
-    <p>
-      I'm passionate about {me.passions}
-    </p>
-    <p>
-      Some of my skills are:
-      <ul>
-        {me.skills.map((skill) => <li class="skill-item">{skill}</li>)}
-      </ul>
-    </p>
-    {
-      shouldRenderWarning && (
-        <p>
-          This site is under construction. Also, this is a random warning that
-          shows 50% of the time.
-        </p>
-      )
-    }
-  </main>
+  <h1>Hello, World!</h1>
+  <h2>My name's {me.firstName} {me.lastName}</h2>
+  <p>I live in {me.country} and I develop stuff</p>
+  <p>
+    I'm passionate about {me.passions}
+  </p>
+  <p>
+    Some of my skills are:
+    <ul>
+      {me.skills.map((skill) => <li class="skill-item">{skill}</li>)}
+    </ul>
+  </p>
+
+  <p>
+    Here are two Astro components that will blow your mind:
+    <Counter />
+    <Counter />
+  </p>
+
+  {
+    shouldRenderWarning && (
+      <p>
+        This site is under construction. Also, this is a random warning that
+        shows 50% of the time.
+      </p>
+    )
+  }
 </Layout>
 
 <style define:vars={{ skillItemColor }}>

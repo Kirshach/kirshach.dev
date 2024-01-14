@@ -1,0 +1,21 @@
+---
+const { initialCount = 0 } = Astro.props;
+// Generate a random ID to avoid collisions when multiple counters are rendered
+const randomId = Math.random().toString(36).slice(2);
+---
+
+<div>
+  Counter: <span class={`counter-count-${randomId}`}>{initialCount}</span>
+  <button class={`increment-button-${randomId}`}>Increment</button>
+  <script define:vars={{ randomId }}>
+    const button = document.querySelector(`.increment-button-${randomId}`);
+    const counter = document.querySelector(`.counter-count-${randomId}`);
+    if (!button || !counter) {
+      throw new Error("Missing button or counter");
+    }
+
+    button.addEventListener("click", () => {
+      counter.textContent = String(parseInt(counter.textContent ?? "") + 1);
+    });
+  </script>
+</div>
