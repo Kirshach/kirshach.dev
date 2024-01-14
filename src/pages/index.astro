@@ -3,8 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import Counter from "../components/Counter.astro";
 
 const me = {
-  firstName: "Dmitrii",
-  lastName: "Kirshanov",
   country: "Armenia",
   passions: ["AR/VR", "music", "coffee"].reduce(
     (res, passion, i, passions) =>
@@ -14,13 +12,22 @@ const me = {
 };
 
 const shouldRenderWarning = Math.random() > 0.5;
-
-const skillItemColor = "darkblue";
 ---
 
 <Layout title="Kirshanov Dmitrii. Home.">
-  <h1>Hello, World!</h1>
-  <h2>My name's {me.firstName} {me.lastName}</h2>
+  <div class="my-portrait-wrapper">
+    <!-- TODO: this should be a <picture> -->
+    <img
+      src="/me.jpeg"
+      alt="Me, looking all nice and cute"
+      class="my-portrait"
+    />
+    <h1>
+      <span class="my-first-name">Dmitrii</span>
+      <span class="my-last-name">Kirshanov</span>
+    </h1>
+  </div>
+  <h2>Yep! That's me!</h2>
   <p>I live in {me.country} and I develop stuff</p>
   <p>
     I'm passionate about {me.passions}
@@ -28,7 +35,7 @@ const skillItemColor = "darkblue";
   <p>
     Some of my skills are:
     <ul>
-      {me.skills.map((skill) => <li class="skill-item">{skill}</li>)}
+      {me.skills.map((skill) => <li>{skill}</li>)}
     </ul>
   </p>
 
@@ -48,8 +55,43 @@ const skillItemColor = "darkblue";
   }
 </Layout>
 
-<style define:vars={{ skillItemColor }}>
-  .skill-item {
-    color: var(--skillItemColor);
+<style>
+  .my-portrait-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  h1 {
+    font-family: var(--fancy-font-stack);
+    font-weight: 400;
+  }
+
+  .my-first-name,
+  .my-last-name {
+    padding: 0.35em 0.5em;
+    border: 1px solid currentcolor;
+    mix-blend-mode: difference;
+  }
+
+  .my-first-name {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+  }
+
+  .my-last-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+  }
+
+  .my-portrait {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 85%);
   }
 </style>
