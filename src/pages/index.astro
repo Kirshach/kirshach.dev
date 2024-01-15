@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Counter from "@components/Counter.astro";
+import Counter from "@components/Counter.tsx";
 
 const me = {
   passions: ["AR/VR", "music", "coffee"].reduce(
@@ -37,11 +37,8 @@ const shouldRenderWarning = Math.random() > 0.5;
     </ul>
   </p>
 
-  <p>
-    Here are two Astro components that will blow your mind:
-    <Counter />
-    <Counter />
-  </p>
+  <p>Here is a Solid.js component that will blow your mind:</p>
+  <Counter client:visible />
 
   {
     shouldRenderWarning && (
@@ -89,3 +86,4 @@ const shouldRenderWarning = Math.random() > 0.5;
     clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 85%);
   }
 </style>
+@components/c
