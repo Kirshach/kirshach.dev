@@ -1,0 +1,43 @@
+---
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+import Layout from "@layouts/Layout.astro";
+import { getTags } from "@utils/get-tags";
+
+export const getStaticPaths = (async () => {
+  // VS Code acts a little silly here pretending it doesn't know Astro.glob's type
+  const posts: Awaited<ReturnType<Astro["glob"]>> =
+    await Astro.glob("../posts/*.md");
+  const tags: string[] = getTags(posts);
+
+  return tags.map((tag) => {
+    const taggedPosts = posts.filter((post) =>
+      post.frontmatter.tags.includes(tag),
+    );
+
+    return {
+      params: { tag },
+      props: { posts: taggedPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { tag }: InferGetStaticParamsType<typeof getStaticPaths> = Astro.params;
+const { posts }: InferGetStaticPropsType<typeof getStaticPaths> = Astro.props;
+---
+
+<Layout title={`Blog. Posts tagged with "${tag}".`}>
+  <h1>Posts tagged with "{tag}":</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

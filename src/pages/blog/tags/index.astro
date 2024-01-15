@@ -1,0 +1,20 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getTags } from "@utils/get-tags";
+
+const posts = await Astro.glob("../posts/*.md");
+const tags = getTags(posts);
+---
+
+<Layout title={`Blog. Tags cloud.`}>
+  <h1>Tag cloud:</h1>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li>
+          <a href={`/blog/tags/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
