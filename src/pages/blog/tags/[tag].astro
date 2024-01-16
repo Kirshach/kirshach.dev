@@ -9,28 +9,31 @@ import Layout from "@layouts/Layout.astro";
 import { getTags } from "@utils/get-tags";
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection("blog-posts");
-  const tags: string[] = getTags(posts);
+  const blogPosts = await getCollection("blog-posts");
+  const tags: string[] = getTags(blogPosts);
 
   return tags.map((tag) => {
-    const taggedPosts = posts.filter((post) => post.data.tags.includes(tag));
+    const taggedPosts = blogPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
 
     return {
       params: { tag },
-      props: { posts: taggedPosts },
+      props: { taggedPosts },
     };
   });
 }) satisfies GetStaticPaths;
 
 const { tag }: InferGetStaticParamsType<typeof getStaticPaths> = Astro.params;
-const { posts }: InferGetStaticPropsType<typeof getStaticPaths> = Astro.props;
+const { taggedPosts }: InferGetStaticPropsType<typeof getStaticPaths> =
+  Astro.props;
 ---
 
 <Layout title={`Blog. Posts tagged with "${tag}".`}>
   <h1>Posts tagged with "{tag}":</h1>
   <ul>
     {
-      posts.map((post) => (
+      taggedPosts.map((post) => (
         <li>
           <a href={`/blog/posts/${post.slug}`}>{post.data.title}</a>
         </li>

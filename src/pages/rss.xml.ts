@@ -3,13 +3,13 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("blog-posts");
+  const blogPosts = await getCollection("blog-posts");
 
   return rss({
-    title: "My super crazy Astro blog",
-    description: "I don't know what this is about",
+    title: "Dmitrii Kirshanov's Blog",
+    description: "Talking AR/VR, WebXR, and more",
     site: context.site!,
-    items: posts.map((post) => ({
+    items: blogPosts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
       description: post.data.description,
