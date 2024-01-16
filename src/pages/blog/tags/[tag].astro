@@ -1,16 +1,13 @@
 ---
-import type {
-  InferGetStaticParamsType,
-  InferGetStaticPropsType,
-  GetStaticPaths,
-} from "astro";
+import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
+
 import Layout from "@layouts/Layout.astro";
 import { getTags } from "@utils/get-tags";
 
 export const getStaticPaths = (async () => {
   const blogPosts = await getCollection("blog-posts");
-  const tags: string[] = getTags(blogPosts);
+  const tags = getTags(blogPosts);
 
   return tags.map((tag) => {
     const taggedPosts = blogPosts.filter((post) =>
@@ -24,9 +21,8 @@ export const getStaticPaths = (async () => {
   });
 }) satisfies GetStaticPaths;
 
-const { tag }: InferGetStaticParamsType<typeof getStaticPaths> = Astro.params;
-const { taggedPosts }: InferGetStaticPropsType<typeof getStaticPaths> =
-  Astro.props;
+const { tag } = Astro.params;
+const { taggedPosts } = Astro.props;
 ---
 
 <Layout title={`Blog. Posts tagged with "${tag}".`}>
