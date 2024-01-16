@@ -1,16 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Counter from "@components/Counter.tsx";
-
-const me = {
-  passions: ["AR/VR", "music", "coffee"].reduce(
-    (res, passion, i, passions) =>
-      res + (i === passions.length - 1 ? ` and ${passion}` : `, ${passion}`),
-  ),
-  skills: ["JavaScript", "TypeScript", "CSS", "HTML"],
-};
-
-const shouldRenderWarning = Math.random() > 0.5;
 ---
 
 <Layout title="Home.">
@@ -27,27 +17,19 @@ const shouldRenderWarning = Math.random() > 0.5;
   <h1 class="visually-hidden">Dmitrii Kirshanov.</h1>
   <h2>Yep! That's me!</h2>
   <p>I live in Armenia and I develop stuff</p>
-  <p>
-    I'm passionate about {me.passions}
-  </p>
+  <p>I'm passionate about AR/МК, music, and coffee.</p>
   <p>
     Some of my skills are:
     <ul>
-      {me.skills.map((skill) => <li>{skill}</li>)}
+      <li>JavaScript</li>
+      <li>TypeScript</li>
+      <li>CSS</li>
+      <li>HTML</li>
     </ul>
   </p>
 
   <p>Here is a Solid.js component that will blow your mind:</p>
   <Counter client:visible />
-
-  {
-    shouldRenderWarning && (
-      <p>
-        This site is under construction. Also, this is a random warning that
-        shows 50% of the time.
-      </p>
-    )
-  }
 </Layout>
 
 <style>
@@ -86,4 +68,3 @@ const shouldRenderWarning = Math.random() > 0.5;
     clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 85%);
   }
 </style>
-@components/c
