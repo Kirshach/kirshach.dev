@@ -6,7 +6,6 @@
   /* Colors */
   --primary-color: hsl(0, 0%, 0%);
   --secondary-color: hsl(0, 0%, 100%);
-  --hover-color: hsl(0, 0%, 95.75%);
 
   --white: hsl(0, 0%, 99.5%);
   --black: hsl(0, 0%, 0.5%);
@@ -20,6 +19,5 @@
   :root {
     --primary-color: hsl(0, 0%, 100%);
     --secondary-color: hsl(0, 0%, 0%);
-    --hover-color: hsl(0, 0%, 20%);
   }
 }

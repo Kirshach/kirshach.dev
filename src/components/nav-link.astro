@@ -16,11 +16,13 @@ const { href } = Astro.props;
     padding: 0.45em 1em;
     text-decoration: none;
     background-color: var(--secondary-color);
-    transition: background-color 0.15s ease-in;
+    transition: border 0.15s ease-out;
+    border: 1px solid transparent;
   }
 
-  a:hover {
-    background-color: var(--hover-color);
-    transition: background-color 0.15s ease-out;
+  a:hover,
+  a:focus {
+    transition: border 0.2s ease-out;
+    border-color: currentcolor;
   }
 </style>
