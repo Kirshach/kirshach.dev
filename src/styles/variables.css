@@ -6,6 +6,10 @@
   /* Colors */
   --primary-color: hsl(0, 0%, 0%);
   --secondary-color: hsl(0, 0%, 100%);
+  --hover-color: hsl(0, 0%, 95.75%);
+
+  /* Spacings */
+  --spacing-s: 1rem;
 }
 
 /* Dark mode */
@@ -13,5 +17,6 @@
   :root {
     --primary-color: hsl(0, 0%, 100%);
     --secondary-color: hsl(0, 0%, 0%);
+    --hover-color: hsl(0, 0%, 20%);
   }
 }

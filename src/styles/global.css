@@ -18,6 +18,7 @@ body {
 
 main {
   flex: 1 0 auto;
+  padding: 0 var(--spacing-s);
 }
 
 .visually-hidden {
