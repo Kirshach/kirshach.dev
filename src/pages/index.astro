@@ -5,19 +5,22 @@ import Counter from "../components/counter";
 
 <Layout title="Home.">
   <div class="my-portrait-wrapper">
-    <!-- TODO: this should be a <picture> with default height -->
-    <img
-      src="/me.jpg"
-      alt="Me, looking all nice and cute"
-      class="my-portrait"
-    />
+    <picture>
+      <source srcset="me.avif" type="image/avif" />
+      <img
+        src="/me.jpg"
+        alt="Me, looking all nice and cute"
+        class="my-portrait"
+        height="500"
+      />
+    </picture>
     <span class="my-first-name" aria-hidden="true">Dmitrii</span>
     <span class="my-last-name" aria-hidden="true">Kirshanov</span>
   </div>
   <h1 class="visually-hidden">Dmitrii Kirshanov.</h1>
   <h2>Yep! That's me!</h2>
   <p>I live in Armenia and I develop stuff</p>
-  <p>I'm passionate about AR/МК, music, and coffee.</p>
+  <p>I'm passionate about AR/VR, music, and coffee.</p>
   <p>
     Some of my skills are:
     <ul>
@@ -64,6 +67,7 @@ import Counter from "../components/counter";
   .my-portrait {
     width: 100%;
     max-height: 500px;
+    height: auto;
     object-fit: cover;
     clip-path: polygon(0% 0%, 100% 15%, 100% 100%, 0% 85%);
   }
