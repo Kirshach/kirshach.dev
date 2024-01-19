@@ -2,8 +2,10 @@ import type { APIContext } from "astro";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
+import { filterDraft } from "../utils/filter-draft";
+
 export async function GET(context: APIContext) {
-  const blogPosts = await getCollection("blog-posts");
+  const blogPosts = await getCollection("blog-posts", filterDraft);
 
   return rss({
     title: "Dmitrii Kirshanov's Blog",

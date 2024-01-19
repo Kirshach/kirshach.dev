@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 
 import Layout from "../../layouts/layout.astro";
 
-const blogPosts = await getCollection("blog-posts");
+import { filterDraft } from "../../utils/filter-draft";
+
+const blogPosts = await getCollection("blog-posts", filterDraft);
 ---
 
 <Layout title="Blog.">
