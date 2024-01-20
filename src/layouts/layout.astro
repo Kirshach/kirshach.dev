@@ -32,9 +32,9 @@ const { title } = Astro.props;
       crossorigin
     />
     <title>Dmitrii Kirshanov. {title}</title>
-    <ViewTransitions />
+    <ViewTransitions fallback="swap" />
   </head>
-  <body>
+  <body transition:animate="slide">
     <Header />
     <main>
       <slot />
