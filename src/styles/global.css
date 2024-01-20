@@ -4,6 +4,20 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/work-sans/work-sans.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/work-sans/work-sans-italic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
+}
+
 body {
   font-family: var(--font-stack);
   color: var(--primary-color);
