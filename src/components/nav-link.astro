@@ -2,11 +2,10 @@
 interface Props {
   to: string;
 }
-
 const { to } = Astro.props;
 ---
 
-<a href={to}>
+<a href={to} data-astro-prefetch="load">
   <slot />
 </a>
 
