@@ -23,7 +23,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    {/** preload italic font to prevent FOIT on nav link clicks*/}
+    {/* preload italic font to prevent FOIT on nav link clicks */}
     <link
       rel="preload"
       href="/fonts/work-sans/work-sans-italic.woff2"
@@ -40,5 +40,20 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      // prevent same-URL navigation
+      document.addEventListener("click", (e) => {
+        if (e.target instanceof HTMLAnchorElement) {
+          let { pathname } = window.location;
+          let href = e.target.getAttribute("href");
+          if (!href) return;
+          if (pathname.endsWith("/")) pathname = pathname.slice(0, -1);
+          if (href.endsWith("/")) href = href.slice(0, -1);
+          if (pathname === href) {
+            e.preventDefault();
+          }
+        }
+      });
+    </script>
   </body>
 </html>
