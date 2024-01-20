@@ -51,6 +51,15 @@ const { title } = Astro.props;
           if (href.endsWith("/")) href = href.slice(0, -1);
           if (pathname === href) {
             e.preventDefault();
+            // screen reader alert
+            const alertElement = document.createElement("div");
+            alertElement.textContent = "You're already on that page!";
+            alertElement.setAttribute("role", "alert");
+            alertElement.classList.add("visually-hidden");
+            document.body.appendChild(alertElement);
+            setTimeout(() => {
+              alertElement.remove();
+            }, 3000);
           }
         }
       });
