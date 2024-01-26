@@ -1,10 +1,10 @@
-import type { APIContext } from "astro";
+import type { APIRoute } from "astro";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 import { filterDraft } from "../utils/filter-draft";
 
-export async function GET(context: APIContext) {
+export const GET: APIRoute = async (context) => {
   const blogPosts = await getCollection("blog-posts", filterDraft);
 
   return rss({
@@ -19,4 +19,4 @@ export async function GET(context: APIContext) {
     })),
     customData: `<language>en-us</language>`,
   });
-}
+};
