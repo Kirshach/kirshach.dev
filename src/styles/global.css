@@ -33,6 +33,15 @@ body {
   margin: 0 auto;
 }
 
+h2 {
+  margin: 0.75em;
+  font-weight: 600;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
 main {
   flex: 1 0 auto;
   padding: 0 var(--spacing-s);
