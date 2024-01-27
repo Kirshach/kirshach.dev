@@ -2,7 +2,6 @@
 import { Picture } from "astro:assets";
 
 import Layout from "@layouts/layout.astro";
-import Counter from "@components/counter";
 import myPortrait from "@assets/my-portrait.jpg";
 ---
 
@@ -25,17 +24,8 @@ import myPortrait from "@assets/my-portrait.jpg";
   <p>I live in Armenia and I develop stuff.</p>
   <p>I'm passionate about AR/VR, music, and coffee.</p>
   <p>
-    Some of my skills are:
-    <ul>
-      <li>JavaScript</li>
-      <li>TypeScript</li>
-      <li>CSS</li>
-      <li>HTML</li>
-    </ul>
+    This page is under construction, so get back later to get to know me better!
   </p>
-
-  <p>Here is a Solid.js component that will blow your mind:</p>
-  <Counter client:visible />
 </Layout>
 
 <style>
@@ -43,6 +33,11 @@ import myPortrait from "@assets/my-portrait.jpg";
     max-width: 500px;
     margin: 0 auto;
     position: relative;
+
+    @media (min-width: 530px) {
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
   }
 
   .my-first-name,
@@ -68,8 +63,6 @@ import myPortrait from "@assets/my-portrait.jpg";
   }
 
   .my-portrait {
-    width: calc(100% + 2rem);
-    max-height: 500px;
     height: auto;
     margin: 0;
     object-fit: cover;
