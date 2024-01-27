@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "../../../layouts/layout.astro";
-import { getTags } from "../../../utils/get-tags";
-import { filterDraft } from "../../../utils/filter-draft";
+import Layout from "@layouts/layout.astro";
+import { getTags } from "@utils/get-tags";
+import { filterDraft } from "@utils/filter-draft";
 
 const blogPosts = await getCollection("blog-posts", filterDraft);
 const tags = getTags(blogPosts);

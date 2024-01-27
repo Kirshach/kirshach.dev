@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
-import { filterDraft } from "../utils/filter-draft";
+import { filterDraft } from "@utils/filter-draft";
 
 export const GET: APIRoute = async (context) => {
   const blogPosts = await getCollection("blog-posts", filterDraft);

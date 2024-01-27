@@ -2,9 +2,9 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 
-import Layout from "../../../layouts/layout.astro";
-import { getTags } from "../../../utils/get-tags";
-import { filterDraft } from "../../../utils/filter-draft";
+import Layout from "@layouts/layout.astro";
+import { getTags } from "@utils/get-tags";
+import { filterDraft } from "@utils/filter-draft";
 
 export const getStaticPaths = (async () => {
   const blogPosts = await getCollection("blog-posts", filterDraft);

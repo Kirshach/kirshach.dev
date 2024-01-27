@@ -1,9 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "../../layouts/layout.astro";
-
-import { filterDraft } from "../../utils/filter-draft";
+import Layout from "@layouts/layout.astro";
+import { filterDraft } from "@utils/filter-draft";
 
 const blogPosts = await getCollection("blog-posts", filterDraft);
 ---
