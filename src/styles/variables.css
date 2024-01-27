@@ -11,6 +11,7 @@
   --black: hsl(0, 0%, 0.5%);
 
   /* Spacings */
+  --spacing-xs: 0.75rem;
   --spacing-s: 1rem;
 }
 

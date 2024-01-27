@@ -1,9 +1,20 @@
 <footer transition:persist="page-footer" transition:animate="none">
-  2024 No rights reserved
+  <div class="footer-content-wrapper">2024 No rights reserved</div>
 </footer>
 
 <style>
   footer {
-    border: 1px solid var(--primary-color);
+    padding: 0 var(--spacing-s);
+  }
+
+  .footer-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-s);
+    border-top: 1px solid currentcolor;
+    border-bottom: 1px solid currentcolor;
+    padding: var(--spacing-xs) 0;
+    width: 100%;
   }
 </style>
